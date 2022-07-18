@@ -23,11 +23,11 @@ filehandle.close()
 gc = pygsheets.authorize(service_file='hehe.json')
 sku = ""
 df = pd.DataFrame()
-sh = gc.open('Sold Chips')
+sh = gc.open('Vanilla Dice')
 wks = sh[0]
 #ithang = input("Page #: ")
 #thang = str(ithang)
-url = "https://api.sellbrite.com/v1/orders?page=2&limit=100"
+url = "https://api.sellbrite.com/v1/orders?page=1&limit=100"
 
 headers = {
     "Accept": "application/json",
@@ -98,7 +98,7 @@ while j < len(res_j):
                     #print("b")
                     pass
                 values.append([order_num, cust_name, name, sku, quan, storeurl, channel, date])
-                if (cat_name == "Collector Chips"):
+                if cat_name == "Dice" or cat_name == "Casino Dice":
                     #if everything is copasetic, adds stuff to the spreadsheet
                     #print("a")
                     wks.insert_rows(row =1, number=1, values =values)
